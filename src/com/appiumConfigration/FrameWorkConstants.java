@@ -82,7 +82,7 @@ public class FrameWorkConstants {
 			{
 				if(errorLog.length()>0)
 					errorLog.append(",");
-				errorLog.append("Application Path");
+				errorLog.append("Application Package");
 			}
 			
 			if(appActivity!=null&&!appActivity.trim().equals(""))
@@ -91,7 +91,7 @@ public class FrameWorkConstants {
 			{
 				if(errorLog.length()>0)
 					errorLog.append(",");
-				errorLog.append("Application Path");
+				errorLog.append("Application Activity");
 			}
 
 		
