@@ -9,7 +9,7 @@ import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
-import com.appiumTest.Configrations.FrameWorkConstants;
+import com.appiumCnfigration.FrameWorkConstants;
  
 public class AppiumTest {
 	

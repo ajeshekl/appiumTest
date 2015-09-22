@@ -1,4 +1,4 @@
-package com.appiumTest.Configrations;
+package com.appiumCnfigration;
 
 import java.io.InputStream;
 import java.net.URL;
