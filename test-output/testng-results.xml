@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results skipped="0" failed="1" total="1" passed="0">
+  <reporter-output>
+  </reporter-output>
+  <suite name="Default suite" duration-ms="92673" started-at="2015-09-22T09:41:19Z" finished-at="2015-09-22T09:42:51Z">
+    <groups>
+    </groups>
+    <test name="Default test" duration-ms="92673" started-at="2015-09-22T09:41:19Z" finished-at="2015-09-22T09:42:51Z">
+      <class name="com.appiumTest.AppiumTest">
+        <test-method status="PASS" signature="setUp()[pri:0, instance:com.appiumTest.AppiumTest@1c72da34]" name="setUp" is-config="true" duration-ms="90662" started-at="2015-09-22T15:11:19Z" finished-at="2015-09-22T15:12:49Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method status="FAIL" signature="Cal()[pri:0, instance:com.appiumTest.AppiumTest@1c72da34]" name="Cal" duration-ms="1981" started-at="2015-09-22T15:12:49Z" finished-at="2015-09-22T15:12:51Z">
+          <exception class="org.openqa.selenium.NoSuchElementException">
+            <message>
+              <![CDATA[An element could not be located on the page using the given search parameters. (WARNING: The server did not provide any stacktrace information)
+Command duration or timeout: 1.96 seconds
+For documentation on this error, please visit: http://seleniumhq.org/exceptions/no_such_element.html
+Build info: version: '2.47.1', revision: '411b314', time: '2015-07-30 03:03:16'
+System info: host: 'Admin-PC', ip: '172.16.2.185', os.name: 'Windows 7', os.arch: 'amd64', os.version: '6.1', java.version: '1.8.0_60'
+Driver info: org.openqa.selenium.remote.RemoteWebDriver
+Capabilities [{app=D:\EclipseWorkSpace\appiumTest\bin\demo.apk, appPackage=com.demo, networkConnectionEnabled=true, warnings={}, databaseEnabled=false, deviceName=emulator-5554, version=4.3, platform=LINUX, appActivity=com.demo.SplashActivity, desired={app=D:\EclipseWorkSpace\appiumTest\bin\demo.apk, appPackage=com.demo, appActivity=com.demo.SplashActivity, platformName=android, deviceName=android, version=4.3}, platformVersion=4.3.1, webStorageEnabled=false, locationContextEnabled=false, browserName=Android, takesScreenshot=true, javascriptEnabled=true, platformName=android}]
+Session ID: 904da503-eae2-42de-877b-d5d211bed04a
+*** Element info: {Using=name, value=Username}]]>
+            </message>
+            <full-stacktrace>
+              <![CDATA[org.openqa.selenium.NoSuchElementException: An element could not be located on the page using the given search parameters. (WARNING: The server did not provide any stacktrace information)
+Command duration or timeout: 1.96 seconds
+For documentation on this error, please visit: http://seleniumhq.org/exceptions/no_such_element.html
+Build info: version: '2.47.1', revision: '411b314', time: '2015-07-30 03:03:16'
+System info: host: 'Admin-PC', ip: '172.16.2.185', os.name: 'Windows 7', os.arch: 'amd64', os.version: '6.1', java.version: '1.8.0_60'
+Driver info: org.openqa.selenium.remote.RemoteWebDriver
+Capabilities [{app=D:\EclipseWorkSpace\appiumTest\bin\demo.apk, appPackage=com.demo, networkConnectionEnabled=true, warnings={}, databaseEnabled=false, deviceName=emulator-5554, version=4.3, platform=LINUX, appActivity=com.demo.SplashActivity, desired={app=D:\EclipseWorkSpace\appiumTest\bin\demo.apk, appPackage=com.demo, appActivity=com.demo.SplashActivity, platformName=android, deviceName=android, version=4.3}, platformVersion=4.3.1, webStorageEnabled=false, locationContextEnabled=false, browserName=Android, takesScreenshot=true, javascriptEnabled=true, platformName=android}]
+Session ID: 904da503-eae2-42de-877b-d5d211bed04a
+*** Element info: {Using=name, value=Username}
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance(Unknown Source)
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(Unknown Source)
+	at java.lang.reflect.Constructor.newInstance(Unknown Source)
+	at org.openqa.selenium.remote.ErrorHandler.createThrowable(ErrorHandler.java:206)
+	at org.openqa.selenium.remote.ErrorHandler.throwIfResponseFailed(ErrorHandler.java:158)
+	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:595)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:348)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElementByName(RemoteWebDriver.java:421)
+	at org.openqa.selenium.By$ByName.findElement(By.java:300)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:340)
+	at com.appiumTest.AppiumTest.Cal(AppiumTest.java:27)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:85)
+	at org.testng.internal.Invoker.invokeMethod(Invoker.java:639)
+	at org.testng.internal.Invoker.invokeTestMethod(Invoker.java:816)
+	at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:1124)
+	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:124)
+	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:108)
+	at org.testng.TestRunner.privateRun(TestRunner.java:773)
+	at org.testng.TestRunner.run(TestRunner.java:623)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:359)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:354)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:312)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:261)
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:86)
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1185)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1110)
+	at org.testng.TestNG.run(TestNG.java:1018)
+	at org.testng.remote.RemoteTestNG.run(RemoteTestNG.java:112)
+	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:205)
+	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:176)
+]]>
+            </full-stacktrace>
+          </exception> <!-- org.openqa.selenium.NoSuchElementException -->
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- Cal -->
+        <test-method status="PASS" signature="tearDown()[pri:0, instance:com.appiumTest.AppiumTest@1c72da34]" name="tearDown" is-config="true" duration-ms="0" started-at="2015-09-22T15:12:51Z" finished-at="2015-09-22T15:12:51Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
+      </class> <!-- com.appiumTest.AppiumTest -->
+    </test> <!-- Default test -->
+  </suite> <!-- Default suite -->
+</testng-results>
