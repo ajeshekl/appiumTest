@@ -100,7 +100,7 @@ public class FrameWorkConstants {
 			else
 			{
 				System.out.println("Enter "+errorLog.toString()+" in Configrtions!!");
-				System.exit(0);
+				System.exit(1);
 			}
 
 		}
