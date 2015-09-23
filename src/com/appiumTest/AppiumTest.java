@@ -2,6 +2,7 @@ package com.appiumTest;
  
 import java.net.MalformedURLException;
 import java.util.concurrent.TimeUnit;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -21,15 +22,18 @@ public class AppiumTest {
 		driver = FrameWorkConstants.getDriver();
 	}
 	
-	
 	@Test
-	public void Cal(){
-		WebElement uName=driver.findElement(By.name("Username"));
-		WebElement pass=driver.findElement(By.name("Username"));
+	public void testLogin(){
+		WebElement uName=driver.findElement(By.id("com.demo:id/usernametext"));
+		WebElement pass=driver.findElement(By.id("com.demo:id/passtext"));
+		WebElement loginButton=driver.findElement(By.id("com.demo:id/loginbtn"));
 		
-		driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
+		driver.manage().timeouts().implicitlyWait(40, TimeUnit.SECONDS);
 		
-		uName.sendKeys("ajesh");
+		uName.sendKeys("sanoj");
+		pass.sendKeys("sanoj");
+		loginButton.click();
+		
 	}
 	
 	@AfterClass

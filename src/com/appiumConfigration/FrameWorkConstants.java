@@ -66,8 +66,9 @@ public class FrameWorkConstants {
 				errorLog.append("Platforn Name");
 			}
 				
-			if(appPath!=null&&!appPath.trim().equals(""))
+			if(appPath!=null&&!appPath.trim().equals("")){
 				capabilities.setCapability("app", appPath);
+			}
 			else
 			{
 				if(errorLog.length()>0)
@@ -76,30 +77,25 @@ public class FrameWorkConstants {
 			}
 			
 			
-			if(appPackage!=null&&!appPackage.trim().equals(""))
-				capabilities.setCapability("appPackage", appPackage); 
-			else
+			if(appPackage!=null&&!appPackage.trim().equals("") && appActivity!=null&&!appActivity.trim().equals(""))
 			{
-				if(errorLog.length()>0)
-					errorLog.append(",");
-				errorLog.append("Application Package");
-			}
-			
-			if(appActivity!=null&&!appActivity.trim().equals(""))
+				capabilities.setCapability("appPackage", appPackage);
 				capabilities.setCapability("appActivity", appActivity);
+				
+			}
+				 
 			else
 			{
 				if(errorLog.length()>0)
 					errorLog.append(",");
-				errorLog.append("Application Activity");
+				errorLog.append("Application Package or Application Activity");
 			}
-
-		
+				
 			if(errorLog.length()==0)
 				driver = new RemoteWebDriver(new URL(prop.get("driverURL").toString()), capabilities);
 			else
 			{
-				System.out.println("Enter "+errorLog.toString()+" in Configrtions!!");
+				System.out.println("Missing "+errorLog.toString()+" in Configurations!!");
 				System.exit(0);
 			}
 
