@@ -66,30 +66,26 @@ public class FrameWorkConstants {
 				errorLog.append("Platforn Name");
 			}
 				
-			if(appPath!=null&&!appPath.trim().equals("")){
+			
+			if(appPath!=null&&!appPath.trim().equals(""))
+			{
 				capabilities.setCapability("app", appPath);
 			}
 			else
 			{
-				if(errorLog.length()>0)
-					errorLog.append(",");
-				errorLog.append("Application Path");
+				if(appPackage!=null&&!appPackage.trim().equals("") && appActivity!=null&&!appActivity.trim().equals(""))
+				{
+					capabilities.setCapability("appPackage", appPackage);
+					capabilities.setCapability("appActivity", appActivity);
+				}
+				else
+				{
+					if(errorLog.length()>0)
+						errorLog.append(",");
+					errorLog.append("Application Path Or Application Package&Activity");
+				}
 			}
 			
-			
-			if(appPackage!=null&&!appPackage.trim().equals("") && appActivity!=null&&!appActivity.trim().equals(""))
-			{
-				capabilities.setCapability("appPackage", appPackage);
-				capabilities.setCapability("appActivity", appActivity);
-				
-			}
-				 
-			else
-			{
-				if(errorLog.length()>0)
-					errorLog.append(",");
-				errorLog.append("Application Package or Application Activity");
-			}
 				
 			if(errorLog.length()==0)
 				driver = new RemoteWebDriver(new URL(prop.get("driverURL").toString()), capabilities);
