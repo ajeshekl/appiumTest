@@ -31,7 +31,6 @@ public class AppiumTest {
 		driver.manage().timeouts().implicitlyWait(40, TimeUnit.SECONDS);
 		
 		uName.sendKeys("sanoj");
-		pass.sendKeys("sanoj");
 		loginButton.click();
 		
 	}
