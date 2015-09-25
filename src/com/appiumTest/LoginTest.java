@@ -10,17 +10,21 @@ public class LoginTest extends AppiumTest {
 
 	@Test
 	public void testLogin() {
-		WebElement uName = driver
-				.findElement(By.id("com.demo:id/usernametext"));
-		WebElement pass = driver.findElement(By.id("com.demo:id/passtext"));
-		WebElement loginButton = driver.findElement(By
-				.id("com.demo:id/loginbtn"));
+		
+		WebElement signinButtonLandingPage = driver.findElement(By
+				.id("com.gudly.android.code:id/signin_button"));
+		WebElement emailField = driver.findElement(By
+				.id("com.gudly.android.code:id/email_edit_text"));
+		WebElement passwordField = driver.findElement(By
+				.id("com.gudly.android.code:id/password_edittext"));
 
 		driver.manage().timeouts().implicitlyWait(40, TimeUnit.SECONDS);
 
-		uName.sendKeys("sanoj");
-		loginButton.click();
+		emailField.clear();
+		emailField.sendKeys("sanoj@gudly.com");
+		passwordField.sendKeys("Test12345");
 
+		signinButtonLandingPage.click();
 	}
 
 }

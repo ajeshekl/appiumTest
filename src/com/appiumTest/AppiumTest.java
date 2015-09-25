@@ -3,8 +3,8 @@ package com.appiumTest;
 import java.net.MalformedURLException;
 
 import org.openqa.selenium.WebDriver;
-import org.testng.annotations.AfterClass;
-import org.testng.annotations.BeforeClass;
+import org.testng.annotations.AfterTest;
+import org.testng.annotations.BeforeTest;
 
 import com.appiumConfigration.FrameWorkConstants;
 
@@ -12,13 +12,15 @@ public class AppiumTest {
 
 	WebDriver driver;
 
-	@BeforeClass
+	@BeforeTest
 	public void setUp() throws MalformedURLException {
 
 		driver = FrameWorkConstants.getDriver();
+		System.out.print("driver");
+
 	}
 
-	@AfterClass
+	@AfterTest
 	public void tearDown() {
 		// driver.quit();
 	}
