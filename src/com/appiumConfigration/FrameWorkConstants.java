@@ -1,5 +1,6 @@
 package com.appiumConfigration;
 
+import java.io.File;
 import java.io.InputStream;
 import java.net.URL;
 import java.util.Properties;
@@ -67,25 +68,36 @@ public class FrameWorkConstants {
 			}
 				
 			
-			if(appPath!=null&&!appPath.trim().equals(""))
-			{
-				capabilities.setCapability("app", appPath);
-			}
-			else
-			{
-				if(appPackage!=null&&!appPackage.trim().equals("") && appActivity!=null&&!appActivity.trim().equals(""))
-				{
-					capabilities.setCapability("appPackage", appPackage);
-					capabilities.setCapability("appActivity", appActivity);
-				}
-				else
-				{
-					if(errorLog.length()>0)
-						errorLog.append(",");
-					errorLog.append("Application Path Or Application Package&Activity");
-				}
-			}
-			
+//			if(appPath!=null&&!appPath.trim().equals(""))
+//			{
+//				File appDir = new File(appPath);
+//				File app = new File(appDir,"Gudly.zip");
+//				capabilities.setCapability("app",app.getAbsolutePath());
+//			}
+//			else
+//			{
+//				if(appPackage!=null&&!appPackage.trim().equals("") && appActivity!=null&&!appActivity.trim().equals(""))
+//				{
+//					capabilities.setCapability("appPackage", appPackage);
+//					capabilities.setCapability("appActivity", appActivity);
+//				}
+//				else
+//				{
+//					if(errorLog.length()>0)
+//						errorLog.append(",");
+//					errorLog.append("Application Path Or Application Package&Activity");
+//				}
+//			}
+//			
+			capabilities.setCapability("deviceName","RVS QuickMobile QA"); 
+			capabilities.setCapability(CapabilityType.BROWSER_NAME, "iOS");
+//			File appDir = new File(appPath);
+//			File app = new File(appDir,"Gudly.zip");
+//			capabilities.setCapability("app",app.getAbsolutePath());
+			capabilities.setCapability("newCommandTimeout", 180);
+			capabilities.setCapability("udid","af5020497b55d10f41a88c488051a85927765a08");
+			capabilities.setCapability("bundleId","com.gudly.app");
+
 				
 			if(errorLog.length()==0)
 				driver = new RemoteWebDriver(new URL(prop.get("driverURL").toString()), capabilities);
