@@ -36,19 +36,24 @@ public class FrameWorkConstants {
 
 			DesiredCapabilities capabilities = new DesiredCapabilities();
 			StringBuilder errorLog = new StringBuilder();
-			String deviceName="",version="",platformName="",appPath="",appPackage="",appActivity="";
+			String testDevice="",deviceName="",version="",platformName="",appPath="",appPackage="",appActivity="",
+					udId="",bundleId="",appName="";
+			testDevice   = (String)prop.get("testDevice");
 			deviceName   = (String)prop.get("deviceName");
 			version      = (String)prop.get("version");
 			platformName = (String)prop.get("platformName");
 			appPath      = (String)prop.get("appPath");
 			appPackage   = (String)prop.get("appPackage");
 			appActivity  = (String)prop.get("appActivity");
+			udId         = (String)prop.get("udid");
+			bundleId     = (String)prop.get("bundleId");
+			appName     = (String)prop.get("appName");
 
 			if(deviceName!=null&&!deviceName.trim().equals(""))
 				capabilities.setCapability("deviceName",deviceName);
 			else
 				errorLog.append("Device Name");
-			
+
 			if(version!=null&&!version.trim().equals(""))
 				capabilities.setCapability(CapabilityType.VERSION,version);
 			else
@@ -57,7 +62,7 @@ public class FrameWorkConstants {
 					errorLog.append(",");
 				errorLog.append("Version");
 			}
-			
+
 			if(platformName!=null&&!platformName.trim().equals(""))
 				capabilities.setCapability("platformName",platformName);
 			else
@@ -66,39 +71,55 @@ public class FrameWorkConstants {
 					errorLog.append(",");
 				errorLog.append("Platforn Name");
 			}
-				
-			
-//			if(appPath!=null&&!appPath.trim().equals(""))
-//			{
-//				File appDir = new File(appPath);
-//				File app = new File(appDir,"Gudly.zip");
-//				capabilities.setCapability("app",app.getAbsolutePath());
-//			}
-//			else
-//			{
-//				if(appPackage!=null&&!appPackage.trim().equals("") && appActivity!=null&&!appActivity.trim().equals(""))
-//				{
-//					capabilities.setCapability("appPackage", appPackage);
-//					capabilities.setCapability("appActivity", appActivity);
-//				}
-//				else
-//				{
-//					if(errorLog.length()>0)
-//						errorLog.append(",");
-//					errorLog.append("Application Path Or Application Package&Activity");
-//				}
-//			}
-//			
-			capabilities.setCapability("deviceName","RVS QuickMobile QA"); 
-			capabilities.setCapability(CapabilityType.BROWSER_NAME, "iOS");
-//			File appDir = new File(appPath);
-//			File app = new File(appDir,"Gudly.zip");
-//			capabilities.setCapability("app",app.getAbsolutePath());
-			capabilities.setCapability("newCommandTimeout", 180);
-			capabilities.setCapability("udid","af5020497b55d10f41a88c488051a85927765a08");
-			capabilities.setCapability("bundleId","com.gudly.app");
 
-				
+
+			if(testDevice!=null&&testDevice.equals("android"))
+			{
+				if(appPath!=null&&!appPath.trim().equals(""))
+				{
+					capabilities.setCapability("app",appPath);
+				}
+				else
+				{
+					if(appPackage!=null&&!appPackage.trim().equals("") && appActivity!=null&&!appActivity.trim().equals(""))
+					{
+						capabilities.setCapability("appPackage", appPackage);
+						capabilities.setCapability("appActivity", appActivity);
+					}
+					else
+					{
+						if(errorLog.length()>0)
+							errorLog.append(",");
+						errorLog.append("Application Path Or Application Package&Activity");
+					}
+				}
+			}
+
+			else//IOS
+			{
+				capabilities.setCapability(CapabilityType.BROWSER_NAME, "iOS");
+				capabilities.setCapability("newCommandTimeout", 180);
+				capabilities.setCapability("udid",udId);
+
+				if(appPath!=null&&!appPath.trim().equals(""))
+				{
+					File appDir = new File(appPath);
+					File app = new File(appDir,appName);
+					capabilities.setCapability("app",app.getAbsolutePath());
+				}
+				else
+				{
+					if(bundleId!=null&&!bundleId.trim().equals(""))
+						capabilities.setCapability("bundleId",bundleId);
+					else
+					{
+						if(errorLog.length()>0)
+							errorLog.append(",");
+						errorLog.append("Application Path Or BundleId");
+					}
+				}
+			}
+
 			if(errorLog.length()==0)
 				driver = new RemoteWebDriver(new URL(prop.get("driverURL").toString()), capabilities);
 			else
