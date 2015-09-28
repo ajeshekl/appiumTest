@@ -16,8 +16,6 @@ public class AppiumTest {
 	public void setUp() throws MalformedURLException {
 
 		driver = FrameWorkConstants.getDriver();
-		System.out.print("driver");
-
 	}
 
 	@AfterTest

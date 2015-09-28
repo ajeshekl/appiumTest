@@ -10,14 +10,14 @@ public class LandingTest extends AppiumTest {
 
 	@Test
 	public void testLanding() {
-		
-		WebElement signinButtonLandingPage = driver.findElement(By
-				.id("com.gudly.android.code:id/signin_button"));
+
+		driver.manage().timeouts().implicitlyWait(80, TimeUnit.SECONDS);
+
+		WebElement signinButtonLandingPage = driver.findElement(By.name("sign in"));
 
 		driver.manage().timeouts().implicitlyWait(80, TimeUnit.SECONDS);
 
 		signinButtonLandingPage.click();
-		
 
 	}
 

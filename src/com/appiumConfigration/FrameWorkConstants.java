@@ -36,7 +36,6 @@ public class FrameWorkConstants {
 			deviceName = (String) prop.get("deviceName");
 			version = (String) prop.get("version");
 			platformName = (String) prop.get("platformName");
-			appPath = (String) prop.get("appPath");
 			appPackage = (String) prop.get("appPackage");
 			appActivity = (String) prop.get("appActivity");
 			udId = (String) prop.get("udid");
@@ -65,6 +64,7 @@ public class FrameWorkConstants {
 			}
 
 			if (testDevice != null && testDevice.equals("android")) {
+				appPath = (String) prop.get("appPathAndroid");
 				if (appPath != null && !appPath.trim().equals("")) {
 					capabilities.setCapability("app", appPath);
 				} else {
@@ -83,7 +83,7 @@ public class FrameWorkConstants {
 
 			else// IOS
 			{
-				capabilities.setCapability(CapabilityType.BROWSER_NAME, "iOS");
+				appPath = (String) prop.get("appPathiOS");
 				capabilities.setCapability("newCommandTimeout", 180);
 				capabilities.setCapability("udid", udId);
 
