@@ -31,7 +31,9 @@ public class FrameWorkConstants {
 
 			DesiredCapabilities capabilities = new DesiredCapabilities();
 			StringBuilder errorLog = new StringBuilder();
-			String testDevice = "", deviceName = "", version = "", platformName = "", appPath = "", appPackage = "", appActivity = "", udId = "", bundleId = "", appName = "";
+			String testDevice = "",deviceName = "",version = "",platformName = "",appPackage = "",
+					appActivity = "",udId = "",bundleId = "",appName = "",appPath="";
+
 			testDevice = (String) prop.get("testDevice");
 			deviceName = (String) prop.get("deviceName");
 			version = (String) prop.get("version");
@@ -41,6 +43,9 @@ public class FrameWorkConstants {
 			udId = (String) prop.get("udid");
 			bundleId = (String) prop.get("bundleId");
 			appName = (String) prop.get("appName");
+
+			if(appName != null && !appName.trim().equals(""))
+				appPath = System.getProperty("user.dir")+"/src/app/"+appName;
 
 			if (deviceName != null && !deviceName.trim().equals(""))
 				capabilities.setCapability("deviceName", deviceName);
@@ -64,7 +69,6 @@ public class FrameWorkConstants {
 			}
 
 			if (testDevice != null && testDevice.equals("android")) {
-				appPath = (String) prop.get("appPathAndroid");
 				if (appPath != null && !appPath.trim().equals("")) {
 					capabilities.setCapability("app", appPath);
 				} else {
@@ -83,14 +87,11 @@ public class FrameWorkConstants {
 
 			else// IOS
 			{
-				appPath = (String) prop.get("appPathiOS");
 				capabilities.setCapability("newCommandTimeout", 180);
 				capabilities.setCapability("udid", udId);
 
 				if (appPath != null && !appPath.trim().equals("")) {
-					File appDir = new File(appPath);
-					File app = new File(appDir, appName);
-					capabilities.setCapability("app", app.getAbsolutePath());
+					capabilities.setCapability("app", appPath);
 				} else {
 					if (bundleId != null && !bundleId.trim().equals(""))
 						capabilities.setCapability("bundleId", bundleId);
@@ -107,7 +108,7 @@ public class FrameWorkConstants {
 						.toString()), capabilities);
 			} else {
 				System.out.println("Missing " + errorLog.toString()
-						+ " in Configurations!!");
+				+ " in Configurations!!");
 				System.exit(0);
 			}
 
