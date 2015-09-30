@@ -11,6 +11,7 @@ import com.appiumConfigration.FrameWorkConstants;
 public class AppiumTest {
 
 	WebDriver driver;
+	WebDriver driver1;
 
 	@BeforeTest
 	public void setUp() throws MalformedURLException {
