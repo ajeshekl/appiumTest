@@ -4,16 +4,19 @@ import org.openqa.selenium.WebDriver;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 
+import com.appiumConfigration.BaseTest;
 import com.appiumConfigration.FrameWorkConstants;
 
-public class AppiumTest {
+public class AppiumTest extends BaseTest {
 
 	WebDriver driver;
 
 	@BeforeTest
 	public void setUp() throws Exception {
 
-		driver = FrameWorkConstants.getDriver();
+		loadDriver();
+		
+		//driver = FrameWorkConstants.getDriver();
 
 	}
 

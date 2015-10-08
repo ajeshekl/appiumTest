@@ -61,7 +61,7 @@ public class BaseTest implements Runnable{
 	    }
 	}
 	
-	public void createDriver(String appPath){
+	public void loadDriver(String appPath){
 		try	{
 			port = appiumMan.startAppium(); 			// Start appium server			  
 			  
