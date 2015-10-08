@@ -11,6 +11,8 @@ import org.openqa.selenium.remote.RemoteWebDriver;
 
 public class FrameWorkConstants {
 
+	static DeviceConfiguration dcv = new DeviceConfiguration();
+	
 	public static Properties getConfigrtions() {
 		Properties prop = new Properties();
 		InputStream input = null;
@@ -24,8 +26,12 @@ public class FrameWorkConstants {
 		return prop;
 	}
 
-	public static WebDriver getDriver() {
+	public static WebDriver getDriver() throws Exception {
 		WebDriver driver = null;
+		
+		dcv.startADB();
+		dcv.getDevices();
+		
 		try {
 			Properties prop = getConfigrtions();
 
