@@ -61,7 +61,8 @@ public class BaseTest implements Runnable {
 	public void loadDriver() {
 		try {
 			//port = appiumMan.startAppium(); // Start appium server
-//			System.out.print(port);
+			appiumMan.startDefaultAppium();
+			
 			Properties prop = getConfigrtions();
 
 			// create appium driver instance

@@ -13,6 +13,7 @@ public class AppiumManager {
 	 */
 	public void startDefaultAppium() throws Exception {
 		cp.runCommand("appium --session-override");
+		System.out.println("Default Appium Started");
 		Thread.sleep(5000);
 	}
 
@@ -52,15 +53,17 @@ public class AppiumManager {
 		String command = "appium --session-override -p " + port
 				+ " --chromedriver-port " + chromePort + " -bp "
 				+ bootstrapPort;
-		//System.out.println(command);
+		System.out.println(command);
 		String output = cp.runCommand(command);
-		//System.out.println(output);
+		System.out.println(output);
+		Thread.sleep(5000);
 
 		if (output.contains("not")) {
 			System.out.println("\nAppium is not installed");
 			System.exit(0);
 		}
 		return port;
+		
 	}
 
 	/**
