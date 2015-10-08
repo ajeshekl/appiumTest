@@ -18,10 +18,9 @@ public class AppiumTest {
 	public void setUp() throws Exception {
 
 		apm.startDefaultAppium();
-
 		dcv.startADB();
 		dcv.getDevices();
-		
+
 		driver = FrameWorkConstants.getDriver();
 
 	}
