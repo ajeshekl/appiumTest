@@ -26,8 +26,13 @@ public class FrameWorkConstants {
 
 	public static WebDriver getDriver() throws Exception {
 		WebDriver driver = null;
-
+		DeviceConfiguration dcv = new DeviceConfiguration();
+		AppiumManager apm = new AppiumManager();
 		try {
+			apm.startDefaultAppium();
+			dcv.startADB();
+			dcv.getDevices();
+
 			Properties prop = getConfigrtions();
 
 			DesiredCapabilities capabilities = new DesiredCapabilities();

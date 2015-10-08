@@ -13,7 +13,7 @@ public class AppiumManager {
 	 */
 	public void startDefaultAppium() throws Exception {
 		cp.runCommand("appium --session-override");
-		//Thread.sleep(5000);
+		Thread.sleep(5000);
 	}
 
 	/**
