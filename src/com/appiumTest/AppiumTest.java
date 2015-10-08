@@ -29,7 +29,7 @@ public class AppiumTest {
 	public void tearDown() throws Exception {
 		// driver.quit();
 
-		apm.stopAppiumServerWindows();
+		apm.stopAppiumServer();
 		apm.closeAppiumWindow();
 
 	}

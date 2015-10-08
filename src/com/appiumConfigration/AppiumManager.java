@@ -13,13 +13,13 @@ public class AppiumManager {
 	 */
 	public void startDefaultAppium() throws Exception {
 		cp.runCommand("appium --session-override");
-		Thread.sleep(5000);
+		//Thread.sleep(5000);
 	}
 
 	/**
 	 * stop appium server in Winodws
 	 */
-	public void stopAppiumServerWindows() throws Exception {
+	public void stopAppiumServer() throws Exception {
 		cp.runCommand("taskkill /F /IM node.exe");
 		Thread.sleep(5000);
 	}
