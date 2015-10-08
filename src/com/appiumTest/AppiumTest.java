@@ -5,7 +5,6 @@ import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 
 import com.appiumConfigration.BaseTest;
-import com.appiumConfigration.FrameWorkConstants;
 
 public class AppiumTest extends BaseTest {
 

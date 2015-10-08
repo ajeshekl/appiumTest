@@ -52,9 +52,9 @@ public class AppiumManager {
 		String command = "appium --session-override -p " + port
 				+ " --chromedriver-port " + chromePort + " -bp "
 				+ bootstrapPort;
-		System.out.println(command);
+		//System.out.println(command);
 		String output = cp.runCommand(command);
-		System.out.println(output);
+		//System.out.println(output);
 
 		if (output.contains("not")) {
 			System.out.println("\nAppium is not installed");

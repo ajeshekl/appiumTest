@@ -1,17 +1,20 @@
 package com.appiumConfigration;
+
+import java.io.InputStream;
 import java.lang.reflect.Array;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Method;
 import java.net.URL;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Properties;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.remote.CapabilityType;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
 
-public class BaseTest implements Runnable{
+public class BaseTest implements Runnable {
 	protected WebDriver driver;
 	protected BaseTest[] deviceThreads;
 	protected int numOfDevices;
@@ -21,67 +24,79 @@ public class BaseTest implements Runnable{
 	protected String port;
 	protected Thread t;
 	protected int deviceCount;
-	
+
 	AppiumManager appiumMan = new AppiumManager();
 	static Map<String, String> devices = new HashMap<String, String>();
 	static DeviceConfiguration deviceConf = new DeviceConfiguration();
 
-	public BaseTest(){
+	public static Properties getConfigrtions() {
+		Properties prop = new Properties();
+		InputStream input = null;
+		try {
+			input = FrameWorkConstants.class
+					.getResourceAsStream("config.properties");
+			prop.load(input);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return prop;
+	}
+
+	public BaseTest() {
 		try {
 			devices = deviceConf.getDevices();
-			deviceCount = devices.size()/3;
-		}catch (Exception e) {
+			deviceCount = devices.size() / 3;
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
-	
-	public BaseTest(int i){
-		int deviceNumber = (i+1);
-		this.deviceId = devices.get("deviceID"+deviceNumber);
-		this.deviceName = devices.get("deviceName"+deviceNumber);
-		this.osVersion = devices.get("osVersion"+deviceNumber);
+
+	public BaseTest(int i) {
+		int deviceNumber = (i + 1);
+		this.deviceId = devices.get("deviceID" + deviceNumber);
+		this.deviceName = devices.get("deviceName" + deviceNumber);
+		this.osVersion = devices.get("osVersion" + deviceNumber);
 	}
-	
-	public void loadDriver(){
-		try	{
-			port = appiumMan.startAppium(); 			// Start appium server			  
-			  
+
+	public void loadDriver() {
+		try {
+			//port = appiumMan.startAppium(); // Start appium server
+//			System.out.print(port);
+			Properties prop = getConfigrtions();
+
 			// create appium driver instance
+
 			DesiredCapabilities capabilities = DesiredCapabilities.android();
+
+			String appPackage = "", appActivity = "", appName = "", appPath = "";
+
+			appPackage = (String) prop.get("appPackage");
+			appActivity = (String) prop.get("appActivity");
+			appName = (String) prop.get("appName");
+			appPath = System.getProperty("user.dir") + "/src/app/" + appName;
+
 			capabilities.setCapability("deviceName", deviceName);
 			capabilities.setCapability("platformName", "android");
 			capabilities.setCapability(CapabilityType.VERSION, osVersion);
-			capabilities.setCapability(CapabilityType.BROWSER_NAME, "chrome");
+			// capabilities.setCapability(CapabilityType.BROWSER_NAME,
+			// "chrome");
 			capabilities.setCapability("udid", deviceId);
-				
-			this.driver = new RemoteWebDriver(new URL("http://127.0.0.1:"+port+"/wd/hub"),capabilities);
-		}
-		catch(Exception e){
-	    	e.printStackTrace();
-	    }
-	}
-	
-	public void loadDriver(String appPath){
-		try	{
-			port = appiumMan.startAppium(); 			// Start appium server			  
-			  
-			// create appium driver instance
-			DesiredCapabilities capabilities = DesiredCapabilities.android();
-			capabilities.setCapability("deviceName", deviceName);
-			capabilities.setCapability("platformName", "android");
-			capabilities.setCapability(CapabilityType.VERSION, osVersion);
+			capabilities.setCapability("appPackage", appPackage);
+			capabilities.setCapability("appActivity", appActivity);
 			capabilities.setCapability("app", appPath);
-			capabilities.setCapability("udid", deviceId);
-				
-			this.driver = new RemoteWebDriver(new URL("http://127.0.0.1:"+port+"/wd/hub"),capabilities);
+
+			// this.driver = new RemoteWebDriver(new URL("http://127.0.0.1:"
+			// + port + "/wd/hub"), capabilities);
+
+			driver = new RemoteWebDriver(
+					new URL("http://127.0.0.1:4723/wd/hub"), capabilities);
+
+		} catch (Exception e) {
+			e.printStackTrace();
 		}
-		catch(Exception e){
-	    	e.printStackTrace();
-	    }
 	}
-	
-	public void destroyDriver()
-	{
+
+	public void destroyDriver() {
 		driver.quit();
 		try {
 			deviceConf.stopADB();
@@ -89,61 +104,61 @@ public class BaseTest implements Runnable{
 			e.printStackTrace();
 		}
 	}
-	public void start(){
-		if (t == null){
-		  t = new Thread(this);
-		  t.start ();
+
+	public void start() {
+		if (t == null) {
+			t = new Thread(this);
+			t.start();
 		}
 	}
 
-	public void run(){
+	public void run() {
 	}
-	
-	public  <c> void execute()
-	{
+
+	public <c> void execute() {
 		Class<?> c;
 		try {
 			int startMethod = 0;
 			String className = this.getClass().toString();
-			System.out.println("class : "+className);
+			System.out.println("class : " + className);
 			className = className.replace("class ", "");
-			System.out.println("class : "+className);
+			System.out.println("class : " + className);
 			// Get extended class name
 			c = Class.forName(className);
-			System.out.println("class : "+c);
-			
+			System.out.println("class : " + c);
+
 			// Get start method
 			Method[] m = c.getMethods();
-			System.out.println("methods: "+m.length);
-			for(int i=0;i<m.length;i++)	{
-				//System.out.println("methods: "+m[i]);
-				if(m[i].toString().contains("start")){
-					startMethod=i;
+			System.out.println("methods: " + m.length);
+			for (int i = 0; i < m.length; i++) {
+				// System.out.println("methods: "+m[i]);
+				if (m[i].toString().contains("start")) {
+					startMethod = i;
 					break;
 				}
 			}
-			System.out.println("methods: "+m[startMethod]);
+			System.out.println("methods: " + m[startMethod]);
 			// get constructor
 			Constructor<?> cons = c.getConstructor(Integer.TYPE);
-			System.out.println("cons: "+cons);
-			
-			System.out.println("deviceCount: "+deviceCount);
+			System.out.println("cons: " + cons);
+
+			System.out.println("deviceCount: " + deviceCount);
 			// Create array of objects
-			Object obj =  Array.newInstance(c, deviceCount);
+			Object obj = Array.newInstance(c, deviceCount);
 			for (int i = 0; i < deviceCount; i++) {
-                Object val = cons.newInstance(i);
-                Array.set(obj, i, val);
-            }
+				Object val = cons.newInstance(i);
+				Array.set(obj, i, val);
+			}
 
 			for (int i = 0; i < deviceCount; i++) {
-                Object val = Array.get(obj, i);
-                m[startMethod].invoke(val);
-            }
-			
+				Object val = Array.get(obj, i);
+				m[startMethod].invoke(val);
+			}
+
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
+
 	}
 }
