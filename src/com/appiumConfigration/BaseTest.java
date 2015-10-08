@@ -66,9 +66,12 @@ public class BaseTest implements Runnable {
 			// port = appiumMan.startAppium(); // Start appium server
 
 			appiumMan.startDefaultAppium();
+			
 			// create appium driver instance
+			System.out.println("AFTR STARING APPIUM");
 
 			Properties prop = getConfigrtions();
+			System.out.println("AFTR GETTING CONFIGRATIONS");
 			DesiredCapabilities capabilities = DesiredCapabilities.android();
 
 			String appPackage = "", appActivity = "", appName = "", appPath = "";

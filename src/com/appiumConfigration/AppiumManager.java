@@ -7,16 +7,16 @@ public class AppiumManager {
 
 	CommandPrompt cp = new CommandPrompt();
 	AvailablePorts ap = new AvailablePorts();
-
+	Runtime runtime = Runtime.getRuntime();
 	/**
 	 * start appium with default arguments
 	 */
 	public void startDefaultAppium(){
 		try {
 			System.out.println("Now starting default Appium");
-			cp.runCommand("appium --session-override");
-			Thread.sleep(5000);
-
+		    runtime.exec("appium --session-override");
+		    Thread.sleep(20000);
+			System.out.println("started");
 		}
 		catch (Exception e) {
 			System.out.println("Default Appium is not started");
