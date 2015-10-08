@@ -11,8 +11,6 @@ import org.openqa.selenium.remote.RemoteWebDriver;
 
 public class FrameWorkConstants {
 
-	static DeviceConfiguration dcv = new DeviceConfiguration();
-	
 	public static Properties getConfigrtions() {
 		Properties prop = new Properties();
 		InputStream input = null;
@@ -28,17 +26,13 @@ public class FrameWorkConstants {
 
 	public static WebDriver getDriver() throws Exception {
 		WebDriver driver = null;
-		
-		dcv.startADB();
-		dcv.getDevices();
-		
+
 		try {
 			Properties prop = getConfigrtions();
 
 			DesiredCapabilities capabilities = new DesiredCapabilities();
 			StringBuilder errorLog = new StringBuilder();
-			String testDevice = "",deviceName = "",version = "",platformName = "",appPackage = "",
-					appActivity = "",udId = "",bundleId = "",appName = "",appPath="";
+			String testDevice = "", deviceName = "", version = "", platformName = "", appPackage = "", appActivity = "", udId = "", bundleId = "", appName = "", appPath = "";
 
 			testDevice = (String) prop.get("testDevice");
 			deviceName = (String) prop.get("deviceName");
@@ -50,8 +44,9 @@ public class FrameWorkConstants {
 			bundleId = (String) prop.get("bundleId");
 			appName = (String) prop.get("appName");
 
-			if(appName != null && !appName.trim().equals(""))
-				appPath = System.getProperty("user.dir")+"/src/app/"+appName;
+			if (appName != null && !appName.trim().equals(""))
+				appPath = System.getProperty("user.dir") + "/src/app/"
+						+ appName;
 
 			if (deviceName != null && !deviceName.trim().equals(""))
 				capabilities.setCapability("deviceName", deviceName);
@@ -114,7 +109,7 @@ public class FrameWorkConstants {
 						.toString()), capabilities);
 			} else {
 				System.out.println("Missing " + errorLog.toString()
-				+ " in Configurations!!");
+						+ " in Configurations!!");
 				System.exit(0);
 			}
 

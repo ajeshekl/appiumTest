@@ -5,38 +5,33 @@ import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 
 import com.appiumConfigration.AppiumManager;
+import com.appiumConfigration.DeviceConfiguration;
 import com.appiumConfigration.FrameWorkConstants;
 
 public class AppiumTest {
 
 	WebDriver driver;
-	// WebDriver driver1;
 	AppiumManager apm = new AppiumManager();
+	DeviceConfiguration dcv = new DeviceConfiguration();
 
 	@BeforeTest
 	public void setUp() throws Exception {
 
-		try {
-			apm.startDefaultAppium();
+		apm.startDefaultAppium();
 
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-
+		dcv.startADB();
+		dcv.getDevices();
+		
 		driver = FrameWorkConstants.getDriver();
 
 	}
 
 	@AfterTest
-	public void tearDown() {
+	public void tearDown() throws Exception {
 		// driver.quit();
-		try {
-			apm.stopAppiumServerWindows();
-			apm.closeAppiumWindow();
 
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
+		apm.stopAppiumServerWindows();
+		apm.closeAppiumWindow();
 
 	}
 
