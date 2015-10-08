@@ -42,7 +42,7 @@ public class BaseTest implements Runnable{
 		this.osVersion = devices.get("osVersion"+deviceNumber);
 	}
 	
-	public void createDriver(){
+	public void loadDriver(){
 		try	{
 			port = appiumMan.startAppium(); 			// Start appium server			  
 			  
