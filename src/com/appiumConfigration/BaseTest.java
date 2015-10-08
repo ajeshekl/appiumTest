@@ -8,6 +8,7 @@ import java.net.URL;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Properties;
+import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.remote.CapabilityType;
@@ -59,14 +60,15 @@ public class BaseTest implements Runnable {
 	}
 
 	public void loadDriver() {
-		try {
-			//port = appiumMan.startAppium(); // Start appium server
-			appiumMan.startDefaultAppium();
-			
-			Properties prop = getConfigrtions();
 
+		try {
+
+			// port = appiumMan.startAppium(); // Start appium server
+
+			appiumMan.startDefaultAppium();
 			// create appium driver instance
 
+			Properties prop = getConfigrtions();
 			DesiredCapabilities capabilities = DesiredCapabilities.android();
 
 			String appPackage = "", appActivity = "", appName = "", appPath = "";
@@ -91,6 +93,7 @@ public class BaseTest implements Runnable {
 
 			driver = new RemoteWebDriver(
 					new URL("http://127.0.0.1:4723/wd/hub"), capabilities);
+			driver.manage().timeouts().implicitlyWait(80, TimeUnit.SECONDS);
 
 		} catch (Exception e) {
 			e.printStackTrace();

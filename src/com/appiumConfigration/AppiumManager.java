@@ -11,10 +11,16 @@ public class AppiumManager {
 	/**
 	 * start appium with default arguments
 	 */
-	public void startDefaultAppium() throws Exception {
-		cp.runCommand("appium --session-override");
-		System.out.println("Default Appium Started");
-		Thread.sleep(5000);
+	public void startDefaultAppium(){
+		try {
+			System.out.println("Now starting default Appium");
+			cp.runCommand("appium --session-override");
+			Thread.sleep(5000);
+
+		}
+		catch (Exception e) {
+			System.out.println("Default Appium is not started");
+		}
 	}
 
 	/**
@@ -63,7 +69,7 @@ public class AppiumManager {
 			System.exit(0);
 		}
 		return port;
-		
+
 	}
 
 	/**
@@ -77,8 +83,7 @@ public class AppiumManager {
 	 * @param bootstrap
 	 *            port
 	 */
-	
-	
+
 	public void startAppium(String port, String chromePort, String bootstrapPort)
 			throws Exception {
 		String command = "appium --session-override -p " + port

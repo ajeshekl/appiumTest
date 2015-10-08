@@ -51,8 +51,8 @@ public class CommandPrompt {
 		return allLine;
 	}
 
-	public static void main(String[] args) throws Exception {
-		CommandPrompt cmd = new CommandPrompt();
-		cmd.runCommand("dir");
-	}
+//	public static void main(String[] args) throws Exception {
+//		CommandPrompt cmd = new CommandPrompt();
+//		cmd.runCommand("dir");
+//	}
 }
