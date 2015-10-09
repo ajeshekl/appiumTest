@@ -15,8 +15,6 @@ import org.openqa.selenium.remote.CapabilityType;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
 
-import com.appiumTest.AppiumTest;
-
 public class BaseTest implements Runnable {
 	protected BaseTest[] deviceThreads;
 	protected int numOfDevices;
@@ -69,10 +67,8 @@ public class BaseTest implements Runnable {
 			appiumMan.startDefaultAppium();
 			
 			// create appium driver instance
-			System.out.println("AFTR STARING APPIUM");
 
 			Properties prop = getConfigrtions();
-			System.out.println("AFTR GETTING CONFIGRATIONS");
 			DesiredCapabilities capabilities = DesiredCapabilities.android();
 
 			String appPackage = "", appActivity = "", appName = "", appPath = "";
