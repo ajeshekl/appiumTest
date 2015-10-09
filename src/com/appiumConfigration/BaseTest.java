@@ -15,8 +15,9 @@ import org.openqa.selenium.remote.CapabilityType;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
 
+import com.appiumTest.AppiumTest;
+
 public class BaseTest implements Runnable {
-	protected WebDriver driver;
 	protected BaseTest[] deviceThreads;
 	protected int numOfDevices;
 	protected String deviceId;
@@ -59,7 +60,7 @@ public class BaseTest implements Runnable {
 		this.osVersion = devices.get("osVersion" + deviceNumber);
 	}
 
-	public void loadDriver() {
+	public void loadDriver(WebDriver driver) {
 
 		try {
 
@@ -96,7 +97,7 @@ public class BaseTest implements Runnable {
 
 			driver = new RemoteWebDriver(
 					new URL("http://127.0.0.1:4723/wd/hub"), capabilities);
-			driver.manage().timeouts().implicitlyWait(80, TimeUnit.SECONDS);
+			driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
 
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -104,7 +105,7 @@ public class BaseTest implements Runnable {
 	}
 
 	public void destroyDriver() {
-		driver.quit();
+		//driver.quit();
 		try {
 			deviceConf.stopADB();
 		} catch (Exception e) {

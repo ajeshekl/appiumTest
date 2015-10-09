@@ -7,20 +7,18 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.testng.annotations.Test;
 
-import com.Utilities.Utils;
-
 public class LandingTest extends AppiumTest {
 
 	@Test
 	public void testLanding() throws IOException {
 		
-		Utils.captureScreen(driver);
+		//Utils.captureScreen(driver);
 	
-		driver.manage().timeouts().implicitlyWait(80, TimeUnit.SECONDS);
-
+		driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
+		
 		WebElement signinButtonLandingPage = driver.findElement(By.name("sign in"));
 
-		driver.manage().timeouts().implicitlyWait(80, TimeUnit.SECONDS);
+		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 
 		signinButtonLandingPage.click();
 

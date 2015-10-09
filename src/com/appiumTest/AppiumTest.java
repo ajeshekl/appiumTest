@@ -13,9 +13,9 @@ public class AppiumTest extends BaseTest {
 	@BeforeTest
 	public void setUp() throws Exception {
 
-		loadDriver();
-		
-		//driver = FrameWorkConstants.getDriver();
+		loadDriver(driver);
+
+		// driver = FrameWorkConstants.getDriver();
 
 	}
 
@@ -23,8 +23,8 @@ public class AppiumTest extends BaseTest {
 	public void tearDown() throws Exception {
 		// driver.quit();
 
-//		apm.stopAppiumServer();
-//		apm.closeAppiumWindow();
+		// apm.stopAppiumServer();
+		// apm.closeAppiumWindow();
 
 	}
 
