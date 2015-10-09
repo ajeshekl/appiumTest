@@ -1,9 +1,9 @@
 package com.appiumTest;
 
 import java.io.IOException;
-import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
 import org.testng.annotations.Test;
 
 public class LandingTest extends AppiumTest {
@@ -13,12 +13,14 @@ public class LandingTest extends AppiumTest {
 
 		// Utils.captureScreen(driver);
 
-		driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
+		// driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
 
 		// WebElement signinButtonLandingPage =
 		// driver.findElement(By.name("sign in"));
-		driver.findElement(By.id("com.apptricity.expense:id/txt_user_id"))
-				.sendKeys("2");
+		
+		WebElement userID = driver.findElement(By.id("com.apptricity.expense:id/txt_user_id"));
+		
+		userID.sendKeys("2");
 
 		driver.findElement(By.id("com.apptricity.expense:id/txt_password"))
 				.sendKeys("1");
@@ -26,10 +28,9 @@ public class LandingTest extends AppiumTest {
 		driver.findElement(By.id("com.apptricity.expense:id/btn_login"))
 				.click();
 
-		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+		// driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 
 		// signinButtonLandingPage.click();
 
 	}
-
 }

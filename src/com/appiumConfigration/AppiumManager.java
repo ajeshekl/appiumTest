@@ -14,9 +14,9 @@ public class AppiumManager {
 	public void startDefaultAppium(){
 		try {
 			System.out.println("Now starting default Appium");
-		    runtime.exec("appium --session-override");
+			runtime.exec("appium --session-override");
 		    Thread.sleep(20000);
-			System.out.println("started");
+			System.out.println("Appium Started");
 		}
 		catch (Exception e) {
 			System.out.println("Default Appium is not started");
