@@ -80,6 +80,9 @@ public class BaseTest implements Runnable {
 			appPackage = (String) prop.get("appPackage");
 			appActivity = (String) prop.get("appActivity");
 			appName = (String) prop.get("appName");
+			
+			System.out.print(appName);
+			
 			appPath = System.getProperty("user.dir") + "/src/app/" + appName;
 
 			capabilities.setCapability("deviceName", deviceName);
