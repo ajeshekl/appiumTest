@@ -13,8 +13,6 @@ public class LandingTest extends AppiumTest {
 
 		// Utils.captureScreen(driver);
 
-		// driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
-
 		// WebElement signinButtonLandingPage =
 		// driver.findElement(By.name("sign in"));
 		
@@ -22,11 +20,11 @@ public class LandingTest extends AppiumTest {
 		
 		userID.sendKeys("2");
 
-		driver.findElement(By.id("com.apptricity.expense:id/txt_password"))
-				.sendKeys("1");
-
-		driver.findElement(By.id("com.apptricity.expense:id/btn_login"))
-				.click();
+//		driver.findElement(By.id("com.apptricity.expense:id/txt_password"))
+//				.sendKeys("1");
+//
+//		driver.findElement(By.id("com.apptricity.expense:id/btn_login"))
+//				.click();
 
 		// driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 

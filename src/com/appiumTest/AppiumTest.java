@@ -14,9 +14,6 @@ public class AppiumTest extends BaseTest {
 	public void setUp() throws Exception {
 
 		loadDriver(driver);
-
-		// driver = FrameWorkConstants.getDriver();
-
 	}
 
 	@AfterTest

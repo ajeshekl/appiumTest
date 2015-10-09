@@ -96,7 +96,7 @@ public class BaseTest implements Runnable {
 
 			driver = new RemoteWebDriver(
 					new URL("http://127.0.0.1:4723/wd/hub"), capabilities);
-			driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
+			driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 
 		} catch (Exception e) {
 			e.printStackTrace();
