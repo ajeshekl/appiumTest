@@ -1,14 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite guice-stage="DEVELOPMENT" name="Failed suite [Suite]" parallel="none">
+<suite name="Failed suite [Suite]" parallel="none">
   <test name="Test(failed)" parallel="none">
     <classes>
-      <class name="com.appiumTest.AppiumTest">
+      <class name="com.appiumTest.LoginTest">
         <methods>
           <include name="setUp"/>
-          <include name="Cal"/>
+          <include name="tearDown"/>
+          <include name="testLogin"/>
         </methods>
-      </class> <!-- com.appiumTest.AppiumTest -->
+      </class> <!-- com.appiumTest.LoginTest -->
+      <class name="com.appiumTest.LandingTest">
+        <methods>
+          <include name="testLanding"/>
+        </methods>
+      </class> <!-- com.appiumTest.LandingTest -->
     </classes>
   </test> <!-- Test(failed) -->
 </suite> <!-- Failed suite [Suite] -->
